@@ -1,36 +1,29 @@
-﻿using System;
+﻿int number = 4566;
 
-string name = "Ewa";
-bool isMale = true;
-int age = 33;
-string gender;
+string numberInString = number.ToString();
 
-if (isMale==true)
+char[] letters = numberInString.ToArray();
+
+int[] howMuch = new int[10];
+
+foreach (char c in letters)
 {
-    gender="mężczyzna";
-}
-else
-{
-    gender = "kobieta";
+
+
+    for (int i = 0; i < 10; i++)
+    {
+        int toInt = c - '0';
+        if(toInt==i)
+        {
+            howMuch[i] = howMuch[i]+1;
+        }
+    }
+
 }
 
-if(age<30 && isMale==false)
+Console.WriteLine("Wyniki dla liczby: "+number);
+
+for (int i=0; i<howMuch.Length; i++)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
-}
-else if (name=="Ewa" && age==33)
-{
-    Console.WriteLine("Ewa, lat 33");
-}
-else if (isMale == true && age <18)
-{
-    Console.WriteLine("Niepelnoletni "+gender);
-}
-else if (age < 30)
-{
-    Console.WriteLine(name + ", " + gender + " ponizej 30 lat");
-}
-else if (age > 30)
-{
-    Console.WriteLine(name + ", " + gender + " ponizej 30 lat");
+    Console.WriteLine(i + " => " + howMuch[i]);
 }
