@@ -1,32 +1,48 @@
-﻿//Added comment to upload proper version of Homework day 5
+﻿using ChallengeApp_Formula1;
+using System.Reflection.Metadata;
 
+Driver driver1 = new Driver("Fernando", "Alonso",41);
+Driver driver2 = new Driver("Max","Verstappen", 25);
+Driver driver3 = new Driver("Robert","Kubica", 38);
+Driver driver4 = new Driver("Lewis","Hamilton",38);
 
-int number = 4566;
+driver1.AddPoints(25);
+driver1.AddPoints(18);
+driver1.AddPoints(25);
+driver1.AddPoints(15);
 
-string numberInString = number.ToString();
+driver2.AddPoints(15);
+driver2.AddPoints(25);
+driver2.AddPoints(18);
+driver2.AddPoints(12);
 
-char[] letters = numberInString.ToArray();
+driver3.AddPoints(18);
+driver3.AddPoints(15);
+driver3.AddPoints(12);
+driver3.AddPoints(25);
 
-int[] howMuch = new int[10];
+driver4.AddPoints(12);
+driver4.AddPoints(12);
+driver4.AddPoints(15);
+driver4.AddPoints(18);
 
-foreach (char c in letters)
+List<Driver> drivers = new List<Driver>()
 {
+    driver1, driver2, driver3, driver4  
+};
+
+int maxResult=-1;
+Driver driverWithMaxResult = null;
 
 
-    for (int i = 0; i < 10; i++)
+foreach (var driver in drivers)
+{
+    if(driver.AllPoints>maxResult)
     {
-        int toInt = c - '0';
-        if(toInt==i)
-        {
-            howMuch[i] = howMuch[i]+1;
-        }
+        driverWithMaxResult=driver;
+        maxResult=driver.AllPoints;
     }
-
 }
 
-Console.WriteLine("Wyniki dla liczby: "+number);
+Console.WriteLine(driverWithMaxResult.Name +" "+ driverWithMaxResult.Surname +" lat " + driverWithMaxResult.Age +" zajal pierwsze miejsce z liczba punktow wynoszaca " + driverWithMaxResult.AllPoints);
 
-for (int i=0; i<howMuch.Length; i++)
-{
-    Console.WriteLine(i + " => " + howMuch[i]);
-}
