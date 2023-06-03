@@ -27,5 +27,13 @@
             this.points.Add(points);
         }
 
+        public void AddPenalty(int points)
+        {
+            if(points < 0)
+            {
+                this.points.Add(points);
+            }
+        }
+
     }
 }
