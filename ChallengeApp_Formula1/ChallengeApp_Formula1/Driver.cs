@@ -4,6 +4,11 @@
     {
         private List<int> points = new List<int>();
 
+        public Driver(string name)
+        {
+            this.Name = name;
+        }
+
         public Driver(string name, string surname, int age)
         {
             this.Name = name;

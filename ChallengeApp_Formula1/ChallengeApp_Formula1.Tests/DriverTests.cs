@@ -1,6 +1,6 @@
 namespace ChallengeApp_Formula1.Tests
 {
-    public class Tests
+    public class DriverTests
     {
         [Test]
         public void WhenDriverRaces_ShouldReturnPointsSum()
