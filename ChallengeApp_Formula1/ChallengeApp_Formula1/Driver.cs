@@ -2,7 +2,7 @@
 {
     public class Driver
     {
-        private List<int> points = new List<int>();
+        private List<float> points = new List<float>();
 
         public Driver(string name)
         {
@@ -19,7 +19,7 @@
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
-        public int AllPoints
+        public float AllPoints
         {
             get
             {
@@ -27,18 +27,41 @@
             }
         }
 
-        public void AddPoints(int points)
+        public void AddPoints(float points)
         {
             this.points.Add(points);
         }
 
-        public void AddPenalty(int points)
+        public void AddPenalty(float points)
         {
             if(points < 0)
             {
-                this.points.Add(points);
+                float temp = this.points[this.points.Count-1];
+                this.points.RemoveAt(this.points.Count-1);
+                this.points.Add(temp + points);
             }
         }
+
+        public Statistics GetStatistic()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;            
+
+            foreach(var point in this.points) 
+            {
+                statistics.Max = Math.Max(statistics.Max, point);
+                statistics.Min = Math.Min(statistics.Min, point);
+                statistics.Average += point;
+            }
+
+            statistics.Average /= this.points.Count();
+
+            return statistics;
+        }
+
 
     }
 }
