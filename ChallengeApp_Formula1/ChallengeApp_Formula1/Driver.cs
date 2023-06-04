@@ -29,8 +29,38 @@
 
         public void AddPoints(float points)
         {
-            this.points.Add(points);
+
+
+            if (points >= 0 && points <= 25)
+            {
+                this.points.Add(points);
+            }
+            else
+            {
+                Console.WriteLine("invalid number of points");
+            }
         }
+
+        public void AddPoints(string points)
+        {
+            if(float.TryParse(points, out float value))
+            {
+                this.AddPoints(value);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+
+
+        public void AddPoints(long points)
+        {
+            float pointsAsFloat = (float)points;
+            this.AddPoints(pointsAsFloat);
+        }
+
+
 
         public void AddPenalty(float points)
         {

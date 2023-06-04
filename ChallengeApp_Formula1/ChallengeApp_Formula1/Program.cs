@@ -6,9 +6,9 @@ Driver driver1 = new Driver("Fernando", "Alonso",41);
 //Driver driver3 = new Driver("Robert","Kubica", 38);
 //Driver driver4 = new Driver("Lewis","Hamilton",38);
 
-driver1.AddPoints(25);
-driver1.AddPoints(18);
-driver1.AddPoints(25);
+driver1.AddPoints("25");
+driver1.AddPoints("Adam");
+driver1.AddPoints(-25);
 driver1.AddPenalty(-3);
 
 /*
