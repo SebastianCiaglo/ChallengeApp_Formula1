@@ -15,7 +15,7 @@ namespace ChallengeApp_Formula1.Tests
             driver.AddPenalty(-3f);
             //act
 
-            var statistics = driver.GetStatistic();
+            var statistics = driver.GetStatisticWithFor();
 
             //assert
 
@@ -36,7 +36,7 @@ namespace ChallengeApp_Formula1.Tests
             driver.AddPenalty(-3);
             //act
 
-            var statistics = driver.GetStatistic();
+            var statistics = driver.GetStatisticWithDoWhile();
 
             //assert
 
@@ -57,7 +57,7 @@ namespace ChallengeApp_Formula1.Tests
             driver.AddPenalty(-3);
             //act
 
-            var statistics = driver.GetStatistic();
+            var statistics = driver.GetStatisticWithWhile();
 
             //assert
 

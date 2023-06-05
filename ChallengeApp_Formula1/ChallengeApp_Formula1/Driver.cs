@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp_Formula1
+﻿using System;
+
+namespace ChallengeApp_Formula1
 {
     public class Driver
     {
@@ -91,6 +93,98 @@
 
             return statistics;
         }
+
+
+        public Statistics GetStatisticWithForEach()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var point in this.points)
+            {
+                statistics.Max = Math.Max(statistics.Max, point);
+                statistics.Min = Math.Min(statistics.Min, point);
+                statistics.Average += point;
+            }
+
+            statistics.Average /= this.points.Count();
+
+            return statistics;
+        }
+
+
+        public Statistics GetStatisticWithFor()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+
+            for(int i=0; i<this.points.Count;i++)
+            //foreach (var point in this.points)
+            {
+                statistics.Max = Math.Max(statistics.Max, this.points[i]);
+                statistics.Min = Math.Min(statistics.Min, this.points[i]);
+                statistics.Average += this.points[i];
+            }
+
+            statistics.Average /= this.points.Count();
+
+            return statistics;
+        }
+
+        public Statistics GetStatisticWithDoWhile()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            int index=0;
+            do
+            {
+                statistics.Max = Math.Max(statistics.Max, this.points[index]);
+                statistics.Min = Math.Min(statistics.Min, this.points[index]);
+                statistics.Average += this.points[index];
+                index++;
+            }
+            while (index< this.points.Count());
+
+            statistics.Average /= this.points.Count();
+
+            return statistics;
+        }
+
+
+        public Statistics GetStatisticWithWhile()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            int index = 0;
+            while (index < this.points.Count())
+            {
+                statistics.Max = Math.Max(statistics.Max, this.points[index]);
+                statistics.Min = Math.Min(statistics.Min, this.points[index]);
+                statistics.Average += this.points[index];
+                index++;
+            }
+           
+
+            statistics.Average /= this.points.Count();
+
+            return statistics;
+        }
+
 
 
     }
