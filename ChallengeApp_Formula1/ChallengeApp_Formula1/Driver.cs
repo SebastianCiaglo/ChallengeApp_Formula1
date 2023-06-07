@@ -28,6 +28,40 @@ namespace ChallengeApp_Formula1
                 return this.points.Sum();
             }
         }
+        
+
+        public void AddPosition(char position)
+        {
+            switch(position)
+            {
+                case 'd':
+                case 'D':
+                    this.points.Add(0);
+                    break;
+
+                case '1':
+                    this.points.Add(25);
+                    break;
+
+                case '2':
+                    this.points.Add(18);
+                    break;
+
+                case '3':
+                    this.points.Add(15);
+                    break;
+
+                case '4':
+                    this.points.Add(12);
+                    break;
+
+                case 'f':
+                case 'F':
+                    AddFastLapPoint(1);
+                    break;
+            }
+        }
+
 
         public void AddPoints(float points)
         {
@@ -74,6 +108,17 @@ namespace ChallengeApp_Formula1
             }
         }
 
+        public void AddFastLapPoint(float points)
+        {
+            if (points == 1)
+            {
+                float temp = this.points[this.points.Count - 1];
+                this.points.RemoveAt(this.points.Count - 1);
+                this.points.Add(temp + points);
+            }
+        }
+
+
         public Statistics GetStatistic()
         {
             var statistics = new Statistics();
@@ -91,100 +136,72 @@ namespace ChallengeApp_Formula1
 
             statistics.Average /= this.points.Count();
 
-            return statistics;
-        }
-
-
-        public Statistics GetStatisticWithForEach()
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var point in this.points)
+            switch(statistics.Max)
             {
-                statistics.Max = Math.Max(statistics.Max, point);
-                statistics.Min = Math.Min(statistics.Min, point);
-                statistics.Average += point;
+                case var max when max > 19:
+
+                    statistics.BestPosition = '1';
+                    break;
+
+                case var max when max > 16:
+
+                    statistics.BestPosition = '2';
+                    break;
+
+                case var max when max > 13:
+
+                    statistics.BestPosition = '3';
+                    break;
+
+                case var max when max > 11:
+
+                    statistics.BestPosition = '4';
+                    break;
+
+                default:
+                    statistics.BestPosition = 'd';
+                    break;
+
             }
 
-            statistics.Average /= this.points.Count();
 
-            return statistics;
-        }
-
-
-        public Statistics GetStatisticWithFor()
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-
-            for(int i=0; i<this.points.Count;i++)
-            //foreach (var point in this.points)
+            switch (statistics.Min)
             {
-                statistics.Max = Math.Max(statistics.Max, this.points[i]);
-                statistics.Min = Math.Min(statistics.Min, this.points[i]);
-                statistics.Average += this.points[i];
+                case var min when min > 19:
+
+                    statistics.WorstPosition = '1';
+                    break;
+
+                case var min when min > 16:
+
+                    statistics.WorstPosition = '2';
+                    break;
+
+                case var min when min > 13:
+
+                    statistics.WorstPosition = '3';
+                    break;
+
+                case var min when min > 11:
+
+                    statistics.WorstPosition = '4';
+                    break;
+
+                case var min when min <10:
+
+                    statistics.WorstPosition = 'd';
+                    break;
+
+                default:
+                    statistics.WorstPosition = 'd';
+                    break;
+
             }
 
-            statistics.Average /= this.points.Count();
+
 
             return statistics;
         }
-
-        public Statistics GetStatisticWithDoWhile()
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            int index=0;
-            do
-            {
-                statistics.Max = Math.Max(statistics.Max, this.points[index]);
-                statistics.Min = Math.Min(statistics.Min, this.points[index]);
-                statistics.Average += this.points[index];
-                index++;
-            }
-            while (index< this.points.Count());
-
-            statistics.Average /= this.points.Count();
-
-            return statistics;
-        }
-
-
-        public Statistics GetStatisticWithWhile()
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            int index = 0;
-            while (index < this.points.Count())
-            {
-                statistics.Max = Math.Max(statistics.Max, this.points[index]);
-                statistics.Min = Math.Min(statistics.Min, this.points[index]);
-                statistics.Average += this.points[index];
-                index++;
-            }
-           
-
-            statistics.Average /= this.points.Count();
-
-            return statistics;
-        }
-
 
 
     }

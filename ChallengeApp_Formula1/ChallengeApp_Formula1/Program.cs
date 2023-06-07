@@ -1,15 +1,47 @@
 ﻿using ChallengeApp_Formula1;
 using System.Reflection.Metadata;
 
-Driver driver1 = new Driver("Fernando", "Alonso",41);
+//Driver driver1 = new Driver("Fernando", "Alonso",41);
 //Driver driver2 = new Driver("Max","Verstappen", 25);
 //Driver driver3 = new Driver("Robert","Kubica", 38);
 //Driver driver4 = new Driver("Lewis","Hamilton",38);
-
+/*
 driver1.AddPoints("25");
+driver1.AddPosition('d');
 driver1.AddPoints("Adam");
 driver1.AddPoints(-25);
 driver1.AddPenalty(-3);
+*/
+
+
+Console.WriteLine("Welcome to the program to gather Formula 1 season progress");
+Console.WriteLine("==========================================================");
+Console.WriteLine();
+
+
+
+var driver = new Driver("Fernando", "Alonso", 41);
+
+while (true)
+{
+    Console.WriteLine("Enter position of driver, to quit enter q");
+    var input = Console.ReadLine();
+
+    if(input == "q")
+    {
+        break;
+    }
+
+
+    driver.AddPosition(input[0]);
+}
+
+
+var statistics = driver.GetStatistic();
+
+Console.WriteLine($"Average: {statistics.Average:N2}");
+Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine($"Max: {statistics.Max}");
 
 /*
 driver2.AddPoints(15);
@@ -28,12 +60,14 @@ driver4.AddPoints(15);
 driver4.AddPoints(18);
 */
 
+/*
 var statistics = driver1.GetStatistic();
 
 Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
-
+Console.WriteLine($"Best position: {statistics.BestPosition}");
+Console.WriteLine($"Worst position: {statistics.WorstPosition}");
 
 /*
 List<Driver> drivers = new List<Driver>()

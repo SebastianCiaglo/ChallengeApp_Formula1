@@ -9,17 +9,17 @@ namespace ChallengeApp_Formula1.Tests
 
             var driver = new Driver("Sergio","Perez",22);
 
-            driver.AddPoints(10f);
-            driver.AddPoints(18f);
-            driver.AddPoints(10f);
+            driver.AddPosition('1');
+            driver.AddPosition('6');
+            driver.AddPosition('d');
             driver.AddPenalty(-3f);
             //act
 
-            var statistics = driver.GetStatisticWithFor();
+            var statistics = driver.GetStatistic();
 
             //assert
 
-            Assert.AreEqual(18,statistics.Max);
+            Assert.AreEqual(25,statistics.Max);
 
         }
 
@@ -36,7 +36,7 @@ namespace ChallengeApp_Formula1.Tests
             driver.AddPenalty(-3);
             //act
 
-            var statistics = driver.GetStatisticWithDoWhile();
+            var statistics = driver.GetStatistic();
 
             //assert
 
@@ -57,7 +57,7 @@ namespace ChallengeApp_Formula1.Tests
             driver.AddPenalty(-3);
             //act
 
-            var statistics = driver.GetStatisticWithWhile();
+            var statistics = driver.GetStatistic();
 
             //assert
 
