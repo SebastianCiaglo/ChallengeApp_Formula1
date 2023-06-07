@@ -32,8 +32,16 @@ while (true)
         break;
     }
 
+    try
+    {
+        driver.AddPosition(input[0]);
+    }
+    catch(Exception e) 
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
 
-    driver.AddPosition(input[0]);
+    
 }
 
 

@@ -4,6 +4,9 @@ namespace ChallengeApp_Formula1
 {
     public class Driver
     {
+        private readonly char sex = 'M';
+        private const double nubmerPI = 3.14; 
+
         private List<float> points = new List<float>();
 
         public Driver(string name)
@@ -16,6 +19,7 @@ namespace ChallengeApp_Formula1
             this.Name = name;
             this.Surname = surname;
             this.Age = age;
+            this.sex = 'K';
         }
 
         public string Name { get; private set; }
@@ -59,6 +63,10 @@ namespace ChallengeApp_Formula1
                 case 'F':
                     AddFastLapPoint(1);
                     break;
+
+                default:
+                    throw new Exception("invalid position");                    
+
             }
         }
 
@@ -73,7 +81,7 @@ namespace ChallengeApp_Formula1
             }
             else
             {
-                Console.WriteLine("invalid number of points");
+                throw new Exception("invalid number of points");
             }
         }
 
@@ -85,7 +93,7 @@ namespace ChallengeApp_Formula1
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float number");
             }
         }
 
