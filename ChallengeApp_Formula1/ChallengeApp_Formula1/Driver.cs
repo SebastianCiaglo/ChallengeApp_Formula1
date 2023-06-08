@@ -2,29 +2,24 @@
 
 namespace ChallengeApp_Formula1
 {
-    public class Driver
+    public class Driver : Person
     {
         private readonly char sex = 'M';
         private const double nubmerPI = 3.14; 
 
         private List<float> points = new List<float>();
 
-        public Driver(string name)
+        public Driver() : this("No name", "No surname", 0,'M')
         {
-            this.Name = name;
+
         }
 
-        public Driver(string name, string surname, int age)
+        public Driver(string name, string surname, int age, char sex) : base(name, surname, age, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            this.sex = 'K';
+            this.counter = 0;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
+
         public float AllPoints
         {
             get
