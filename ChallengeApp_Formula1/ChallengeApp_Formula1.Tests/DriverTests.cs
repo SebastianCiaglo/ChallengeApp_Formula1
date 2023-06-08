@@ -7,7 +7,7 @@ namespace ChallengeApp_Formula1.Tests
         {
             //arrange
 
-            var driver = new Driver("Sergio","Perez",22);
+            var driver = new Driver("Sergio","Perez");
 
             driver.AddPosition('1');
             driver.AddPosition('6');
@@ -28,7 +28,7 @@ namespace ChallengeApp_Formula1.Tests
         {
             //arrange
 
-            var driver = new Driver("Sergio", "Perez", 22);
+            var driver = new Driver("Sergio", "Perez");
 
             driver.AddPoints(10);
             driver.AddPoints(18);
@@ -49,7 +49,7 @@ namespace ChallengeApp_Formula1.Tests
         {
             //arrange
 
-            var driver = new Driver("Sergio", "Perez", 22);
+            var driver = new Driver("Sergio", "Perez");
 
             driver.AddPoints(10);
             driver.AddPoints(18);

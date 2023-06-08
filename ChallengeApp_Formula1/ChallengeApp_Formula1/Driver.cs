@@ -2,23 +2,22 @@
 
 namespace ChallengeApp_Formula1
 {
-    public class Driver : Person
-    {
+    public class Driver : iEvaluation
+        {
         private readonly char sex = 'M';
         private const double nubmerPI = 3.14; 
 
         private List<float> points = new List<float>();
 
-        public Driver() : this("No name", "No surname", 0,'M')
-        {
 
+        public Driver(string name, string surname)
+        {
+            this.Name=name;
+            this.Surname=surname;
         }
 
-        public Driver(string name, string surname, int age, char sex) : base(name, surname, age, sex)
-        {
-            this.counter = 0;
-        }
-
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
 
         public float AllPoints
         {
@@ -27,7 +26,6 @@ namespace ChallengeApp_Formula1
                 return this.points.Sum();
             }
         }
-        
 
         public void AddPosition(char position)
         {
@@ -205,7 +203,6 @@ namespace ChallengeApp_Formula1
 
             return statistics;
         }
-
 
     }
 }

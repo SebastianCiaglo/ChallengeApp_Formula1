@@ -7,8 +7,8 @@
         {
             //arrange
 
-            var driver1 = GetDriver("Yuki");
-            var driver2 = GetDriver("Yuki");
+            var driver1 = GetDriver("Yuki", "Tsunoda");
+            var driver2 = GetDriver("Yuki", "Tsunoda");
 
             //act
 
@@ -34,10 +34,11 @@
 
         }
 
-
-        private Driver GetDriver(string name)
+        
+        private Driver GetDriver(string name, string surname)
         {
-            return new Driver(name);
+            return new Driver(name, surname);
         }
+        
     }
 }

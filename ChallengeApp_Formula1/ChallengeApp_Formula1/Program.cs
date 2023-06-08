@@ -1,5 +1,4 @@
 ﻿using ChallengeApp_Formula1;
-using System.Reflection.Metadata;
 
 //Driver driver1 = new Driver("Fernando", "Alonso",41);
 //Driver driver2 = new Driver("Max","Verstappen", 25);
@@ -20,7 +19,7 @@ Console.WriteLine();
 
 
 
-var driver = new Driver("Fernando", "Alonso", 41);
+var driver = new Driver("Fernando", "Alonso");
 
 while (true)
 {
