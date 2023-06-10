@@ -19,7 +19,11 @@ Console.WriteLine();
 
 
 
-var driver = new Driver("Fernando", "Alonso");
+var driver = new DriverInFile("Fernando", "Alonso");
+driver.AddPoints("25");
+driver.AddPoints(25);
+
+/*
 
 while (true)
 {
@@ -31,9 +35,11 @@ while (true)
         break;
     }
 
+    
     try
     {
-        driver.AddPosition(input[0]);
+        driver.AddPoints(input);
+        //driver.AddPosition(input[0]);
     }
     catch(Exception e) 
     {
@@ -42,7 +48,7 @@ while (true)
 
     
 }
-
+*/
 
 var statistics = driver.GetStatistic();
 
