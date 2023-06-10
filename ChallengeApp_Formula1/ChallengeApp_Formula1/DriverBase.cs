@@ -8,6 +8,10 @@
             Surname = surname;
         }
 
+        public delegate void PointsAddedDelegate(object sender, EventArgs args);
+
+        public abstract event PointsAddedDelegate PointsAdded;
+
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
@@ -22,4 +26,5 @@
 
         public abstract Statistics GetStatistic();
     }
+
 }

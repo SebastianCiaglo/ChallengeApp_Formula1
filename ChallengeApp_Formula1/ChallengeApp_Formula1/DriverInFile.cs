@@ -4,6 +4,8 @@
     {
         private const string fileName = "points.txt";
 
+        public event PointsAddedDelegate PointsAdded;
+
         public DriverInFile(string name, string surname) : base(name, surname)
         {
         }
@@ -18,6 +20,11 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(points);
+                }
+
+                if (PointsAdded != null)
+                {
+                    PointsAdded(this, new EventArgs());
                 }
 
             }
@@ -85,4 +92,5 @@
             return statistics;
         }
     }
+
 }

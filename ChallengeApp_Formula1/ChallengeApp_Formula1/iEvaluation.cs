@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp_Formula1
+﻿using static ChallengeApp_Formula1.DriverBase;
+
+namespace ChallengeApp_Formula1
 {
     public interface iEvaluation
     {
@@ -15,5 +17,8 @@
 
         void AddPoints(long points);
 
+        event PointsAddedDelegate PointsAdded;
+
     }
+
 }

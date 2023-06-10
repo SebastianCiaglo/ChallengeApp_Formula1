@@ -2,11 +2,15 @@
 {
     public class DriverInMemory : DriverBase
     {
+        public override event PointsAddedDelegate PointsAdded;
+
         private List<float> points = new List<float>();
 
         public DriverInMemory(string name, string surname) : base(name, surname)
         {
+
         }
+
 
         public override float AllPoints
         {
@@ -23,6 +27,11 @@
             if (points >= 0 && points <= 25)
             {
                 this.points.Add(points);
+
+                if(PointsAdded != null)
+                {
+                    PointsAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -68,5 +77,6 @@
 
             return statistics;
         }
+
     }
 }

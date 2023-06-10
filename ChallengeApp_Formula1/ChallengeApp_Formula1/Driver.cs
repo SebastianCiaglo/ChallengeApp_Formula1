@@ -203,6 +203,5 @@ namespace ChallengeApp_Formula1
 
             return statistics;
         }
-
     }
 }
