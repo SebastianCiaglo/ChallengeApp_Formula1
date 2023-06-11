@@ -8,14 +8,14 @@
             Surname = surname;
         }
 
+        public abstract event PointsAddedDelegate PointsAdded;
+
         public delegate void PointsAddedDelegate(object sender, EventArgs args);
 
-        public abstract event PointsAddedDelegate PointsAdded;
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
-        public abstract float AllPoints { get; }
         public abstract void AddPoints(float points);
 
 

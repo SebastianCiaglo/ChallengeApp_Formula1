@@ -2,22 +2,22 @@
 {
     public class DriverInFile : DriverBase
     {
-        private const string fileName = "points.txt";
+        private const string filename = "points.txt";
 
-        public event PointsAddedDelegate PointsAdded;
+        public override event PointsAddedDelegate PointsAdded;
 
         public DriverInFile(string name, string surname) : base(name, surname)
         {
         }
 
-        public override float AllPoints => throw new NotImplementedException();
+
 
         public override void AddPoints(float points)
         {
 
             if (points >= 0 && points <= 25)
             {
-                using (var writer = File.AppendText(fileName))
+                using (var writer = File.AppendText(filename))
                 {
                     writer.WriteLine(points);
                 }
@@ -39,14 +39,14 @@
         {
             if (float.TryParse(points, out float value))
             {
-                using (var writer = File.AppendText(fileName))
+                using (var writer = File.AppendText(filename))
                 {
                     writer.WriteLine(points);
                 }
             }
             else
             {
-                throw new Exception("String is not float number");
+                throw new Exception("string is not float number");
             }
         }
 
@@ -60,34 +60,24 @@
         {
             var statistics = new Statistics();
 
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
             int i = 0;
 
-            if (File.Exists(fileName))
+            if (File.Exists(filename))
             {
-                using (var reader = File.OpenText(fileName))
+                using (var reader = File.OpenText(filename))
                 {
                     var line = reader.ReadLine();
                     while (line != null)
                     {
-                        
+                    
                         var point = float.Parse(line);
-
-                        statistics.Max = Math.Max(statistics.Max, point);
-                        statistics.Min = Math.Min(statistics.Min, point);
-                        statistics.Average += point;
 
                         line = reader.ReadLine();
                         i++;
                     } 
-                    
+                
                 }
             }
-
-            statistics.Average = statistics.Average / i;
 
             return statistics;
         }

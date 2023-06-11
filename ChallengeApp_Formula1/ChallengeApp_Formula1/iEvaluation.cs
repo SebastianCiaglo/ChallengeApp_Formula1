@@ -7,9 +7,6 @@ namespace ChallengeApp_Formula1
 
         string Name { get; }
 
-        Statistics GetStatistic();
-
-        float AllPoints { get; }
 
         void AddPoints(float points);
 
@@ -19,6 +16,7 @@ namespace ChallengeApp_Formula1
 
         event PointsAddedDelegate PointsAdded;
 
+        Statistics GetStatistic();
     }
 
 }

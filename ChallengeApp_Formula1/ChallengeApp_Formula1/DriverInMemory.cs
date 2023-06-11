@@ -11,15 +11,6 @@
 
         }
 
-
-        public override float AllPoints
-        {
-            get
-            {
-                return this.points.Sum();
-            }
-        }
-
         public override void AddPoints(float points)
         {
 
@@ -62,18 +53,10 @@
         {
             var statistics = new Statistics();
 
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var point in this.points)
+            foreach(var point in this.points)
             {
-                statistics.Max = Math.Max(statistics.Max, point);
-                statistics.Min = Math.Min(statistics.Min, point);
-                statistics.Average += point;
+                statistics.AddPoints(point);
             }
-
-            statistics.Average /= this.points.Count();
 
             return statistics;
         }

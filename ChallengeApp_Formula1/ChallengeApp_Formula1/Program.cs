@@ -23,7 +23,7 @@ var driverInMemory = new DriverInMemory("Fernando", "Alonso");
 
 var driverInFile = new DriverInMemory("Fernando", "Alonso");
 
-driverInMemory.PointsAdded += DriverPointsAdded;
+//driverInMemory.PointsAdded += DriverPointsAdded;
 driverInFile.PointsAdded += DriverPointsAdded;
 
 void DriverPointsAdded(object sender, EventArgs args)
@@ -32,7 +32,8 @@ void DriverPointsAdded(object sender, EventArgs args)
 }
 
 driverInFile.AddPoints("25");
-driverInMemory.AddPoints(18);
+driverInFile.AddPoints(18);
+//driverInMemory.AddPoints(18);
 
 
 /*
@@ -60,13 +61,15 @@ while (true)
 
     
 }
+*/
 
-
-var statistics = driver.GetStatistic();
+var statistics = driverInFile.GetStatistic();
+//var statistics = driverInMemory.GetStatistic();
 
 Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"Best Position: {statistics.BestPosition}");
 
 /*
 driver2.AddPoints(15);
